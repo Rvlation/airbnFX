@@ -9,8 +9,12 @@ import java.util.Iterator;
 import java.util.Map;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Window;
+import sunat.gob.pe.airbnfx.App;
 import sunat.gob.pe.airbnfx.model.dao.IUsuarioDao;
 import sunat.gob.pe.airbnfx.model.dao.impl.UsuarioDaoImpl;
 
@@ -48,6 +52,13 @@ public class LoginAirbnController{
             DashboardController dashboardController = loader.<DashboardController>getController();
             dashboardController.setMensaje(txtUsuario.getText());
         }*/  
+        
+            FXMLLoader loader =  App.getFXMLLoader("busquedaAirbn");
+            Parent busquedaAirbn = loader.load();
+            App.scene.setRoot(busquedaAirbn);
+               Window window = App.scene.getWindow();
+            window.setWidth(900);
+            window.setHeight(700);
        
     }   
     
