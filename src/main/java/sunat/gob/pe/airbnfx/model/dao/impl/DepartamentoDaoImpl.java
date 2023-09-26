@@ -32,12 +32,13 @@ public class DepartamentoDaoImpl implements iDepartamento {
 
         try {
 
-            String sql = "Select idDepartamento, Distrito, Direccion, Espacio, Descripcion, NumHabitacion, NumBanios, NumCochera,Capacidad,PrecioNoche from departamento";
+            String sql = "Select idDepartamento, Distrito, Direccion, Espacio, Descripcion, NumHabitacion, NumBanios, NumCochera,Capacidad,nvl(PrecioNoche,0) from departamento";
             pstmt = conn.prepareStatement(sql);
 
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                listaDepartamento.add(new Departamento(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getInt(4), rs.getString(5), rs.getInt(6), rs.getInt(7),rs.getInt(8),rs.getInt(9),rs.getFloat(10)));
+                listaDepartamento.add(new Departamento(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getInt(4), rs.getString(5), rs.getInt(6), rs.getInt(7),rs.getInt(8),rs.getInt(9),rs.getDouble(10)));
+                    System.out.println("Depa:" + rs.getString(2));
             }
            
 

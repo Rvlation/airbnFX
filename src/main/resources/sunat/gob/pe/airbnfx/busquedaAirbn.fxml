@@ -45,18 +45,19 @@
                   <Label text="Precio hasta:" GridPane.rowIndex="1" />
                   <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Button mnemonicParsing="false" text="Dashboard" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                  <Button mnemonicParsing="false" text="Buscar" GridPane.columnIndex="3" />
+                  <Button mnemonicParsing="false" onAction="#buscarDepartamento" text="Buscar" GridPane.columnIndex="3" />
                </children>
             </GridPane>
-            <TableView layoutX="94.0" layoutY="180.0" prefHeight="200.0" prefWidth="613.0">
+            <TableView fx:id="departamentoTable" layoutX="94.0" layoutY="180.0" prefHeight="200.0" prefWidth="652.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="Distrito" />
-                <TableColumn prefWidth="75.0" text="Direccion" />
-                  <TableColumn prefWidth="75.0" text="Piso" />
-                  <TableColumn prefWidth="75.0" text="Habitaciones" />
-                  <TableColumn prefWidth="75.0" text="Descripcion" />
-                  <TableColumn prefWidth="103.0" text="Precio x Noche" />
-                  <TableColumn prefWidth="75.0" text="Operacion" />
+                  <TableColumn fx:id="idColumn" prefWidth="45.0" text="idDepartamento" />
+                <TableColumn fx:id="distritoColumn" prefWidth="72.0" text="Distrito" />
+                <TableColumn fx:id="direccionColumn" prefWidth="145.0" text="Direccion" />
+                  <TableColumn fx:id="capacidadColumn" prefWidth="38.0" text="Capacidad" />
+                  <TableColumn fx:id="habitacionesColumn" prefWidth="36.0" text="Habitaciones" />
+                  <TableColumn fx:id="descripcionColumn" prefWidth="175.0" text="Descripcion" />
+                  <TableColumn prefWidth="72.0" text="Precio x Noche" />
+                  <TableColumn prefWidth="45.0" text="Operacion" />
               </columns>
             </TableView>
          </children>
