@@ -60,12 +60,7 @@ public class LoginAirbnController{
             dashboardController.setMensaje(txtUsuario.getText());
         }*/  
         
-            FXMLLoader loader =  App.getFXMLLoader("busquedaAirbn");
-            Parent busquedaAirbn = loader.load();
-            App.scene.setRoot(busquedaAirbn);
-               Window window = App.scene.getWindow();
-            window.setWidth(900);
-            window.setHeight(700);
+
        
     }   
     

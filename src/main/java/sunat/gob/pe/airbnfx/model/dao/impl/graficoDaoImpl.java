@@ -10,38 +10,39 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import sunat.gob.pe.airbnfx.model.dao.Igrafico;
 import sunat.gob.pe.airbnfx.model.entities.Departamento;
-import sunat.gob.pe.airbnfx.model.dao.iDepartamento;
-import sunat.gob.pe.airbnfx.model.entities.Usuario;
+import sunat.gob.pe.airbnfx.model.entities.barra;
 import sunat.gob.pe.airbnfx.model.util.Conexion;
 
 /**
  *
  * @author user
  */
-public class DepartamentoDaoImpl implements iDepartamento {
+public class graficoDaoImpl implements Igrafico {
 
+      private List<barra> listaBarra = new ArrayList<>();
+      private PreparedStatement pstmt = null;
+      private ResultSet rs = null;
+      
     @Override
-    public List<Departamento> busquedaDepartameto() {
-        
-          Conexion conexion = new Conexion();
+    public List<barra> grafico1() {
+      Conexion conexion = new Conexion();
         Connection conn = conexion.getConexion();
         PreparedStatement pstmt = null;
-        List<Departamento> listaDepartamento = new ArrayList<>();
-        ResultSet rs = null;
+      
+          try {
 
-        try {
-
-            String sql = "Select idDepartamento, Distrito, Direccion, Espacio, Descripcion, NumHabitacion, NumBanios, NumCochera,Capacidad,PrecioNoche from departamento";
+             String sql = "SELECT Departamento, COUNT(1) as count FROM departamento GROUP BY Departamento";
+          
             pstmt = conn.prepareStatement(sql);
 
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                listaDepartamento.add(new Departamento(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getInt(4), rs.getString(5), rs.getInt(6), rs.getInt(7),rs.getInt(8),rs.getInt(9),rs.getDouble(10)));
-                    System.out.println("Depa:" + rs.getString(2));
+                listaBarra.add(new barra(rs.getString(1), rs.getInt(2) ));
+                    System.out.println("DISTRITO:" + rs.getString(1)+ ": " + rs.getInt(2));
             }
            
-
         } catch (SQLException se) {
             System.out.println(se.getMessage());
         } finally {
@@ -59,10 +60,8 @@ public class DepartamentoDaoImpl implements iDepartamento {
                 System.out.println(se.getMessage());
             }
         }
-
-        return listaDepartamento;
+        return listaBarra;
+        
     }
-
     
-      
 }
