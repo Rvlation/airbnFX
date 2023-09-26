@@ -45,6 +45,13 @@ public class LoginAirbnController{
               System.out.println("Clave: " + key + " -> Valor: " + mapUsuario.get(key));
             }
         }
+        
+        FXMLLoader loader =  App.getFXMLLoader("busquedaAirbn");
+            Parent busquedaAirbn = loader.load();
+            App.scene.setRoot(busquedaAirbn);
+               Window window = App.scene.getWindow();
+            window.setWidth(900);
+            window.setHeight(700);
         /*if(validarDatos()){
             FXMLLoader loader =  App.getFXMLLoader("dashboard");
             Parent dashboard = loader.load();
